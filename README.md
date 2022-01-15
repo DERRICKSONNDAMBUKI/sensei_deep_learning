@@ -83,3 +83,9 @@ In order to change the value of neurons we can either tweak the weights and bias
 I highly recommend using a professional environment like PyCharm or Jupyter Notebook.
 - PyCharm: https://www.jetbrains.com/pycharm/download/
 - Anaconda: https://www.anaconda.com/distribution/
+Tensorflow is the main library here. We will use it to load data sets, build neural networks, train them etc. The other three libraries are not necessary for the functionality of the neural network. We are only using them in order to load our own images of digits at the end.
+Numpy will be used for reformatting our own images and Matplotlib will be used for their visualization. 
+CV2 is the OpenCV library and it will allow us to load our images into the script. You will need to install this module separately:
+```
+$ pip install opencv-python
+```
