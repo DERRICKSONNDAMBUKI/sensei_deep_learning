@@ -21,7 +21,7 @@ model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
 model.add(tf.keras.layers.Dense(units=128, activation='relu'))
 model.add(tf.keras.layers.Dense(units=128, activation='relu'))
-model.add(tf.kersa.layers.Dense(units=10, activation=tf.nn.softmax))
+model.add(tf.keras.layers.Dense(units=10, activation=tf.nn.softmax))
 # First we define our model to be a Sequential . This is a linear type of model
 # where which is defined layer by layer. Once we have defined the model, we
 # can use the add function to add as many different layers as we want.
