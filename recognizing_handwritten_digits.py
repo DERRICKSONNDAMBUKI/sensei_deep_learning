@@ -41,7 +41,7 @@ model.add(tf.keras.layers.Dense(units=10, activation=tf.nn.softmax))
 
 # Because of this we are getting ten different probabilities for each digit, indicating its likelihood.
 model.compile(optimizer='adam',
-              loss='sparse_categorical_crossntropy', metrics=['accuracy'])
+              loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 # We are not going to go into the math of the adam optimizer or the sparse_categorical_crossentropy loss function.
 # However, these are very popular choices, especially for tasks like this one.
 
