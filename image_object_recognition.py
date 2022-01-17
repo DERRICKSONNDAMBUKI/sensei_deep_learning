@@ -53,12 +53,12 @@ model.add(layers.Dense(10, activation='relu'))
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(train_images, train_labels, epochs=10,
-          validation_data=(test_images, train_labels))
+          validation_data=(test_images, test_labels))
 # This means that our model is going to see the same data ten times over and over  again.
-test_loss, test_acc = model.evaluate(train_images, test_labels, verbose=2)
+test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
 
 print('loss: ', test_loss)
-print('accuracy: ', test_acc)
+print('accuracy: {}%'.format( test_acc*100))
 
 # classifying own images
 # Since our model is trained, we can now go ahead and use our own images of cars, planes, horses etc. for
@@ -78,9 +78,9 @@ print('accuracy: ', test_acc)
 # green, red) to RGB (red, green, blue).
 
 # predict
-prediction = model.predict(np.array([img1]/255))
-index = np.argmax(prediction)
-print(class_names[index])
+# prediction = model.predict(np.array([img1]/255))
+# index = np.argmax(prediction)
+# print(class_names[index])
 # First we use the predict function to get the softmax result. Notice that we are converting our image into a NumPy array and dividing it by 255. This is
 # because we need to normalize it, since our model was trained on normalized values. Then we use the argmax function to get the index of the highest
 # softmax activation value. Finally, we print the class name of that index as a result.
