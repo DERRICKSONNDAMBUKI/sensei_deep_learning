@@ -50,7 +50,7 @@ model.fit(X_train, Y_train, epochs=3)
 loss, accuracy = model.evaluate(X_test, Y_test)
 
 print('Loss: ', loss)
-print('Accuracy', accuracy)
+print('Accuracy: {}%'.format(accuracy*100))
 
 # # predicting your own data
 # image = cv.imread('digits.png')[:,:,0]
