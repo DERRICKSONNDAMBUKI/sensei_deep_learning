@@ -81,11 +81,23 @@ In order to change the value of neurons we can either tweak the weights and bias
 - Backpropagation is the algorithm which calculates the gradient for the gradient descent algorithm. This is done by starting from the output layer and reverse engineering the desired changes.
 
 I highly recommend using a professional environment like PyCharm or Jupyter Notebook.
+
 - PyCharm: https://www.jetbrains.com/pycharm/download/
 - Anaconda: https://www.anaconda.com/distribution/
-Tensorflow is the main library here. We will use it to load data sets, build neural networks, train them etc. The other three libraries are not necessary for the functionality of the neural network. We are only using them in order to load our own images of digits at the end.
-Numpy will be used for reformatting our own images and Matplotlib will be used for their visualization. 
-CV2 is the OpenCV library and it will allow us to load our images into the script. You will need to install this module separately:
+  Tensorflow is the main library here. We will use it to load data sets, build neural networks, train them etc. The other three libraries are not necessary for the functionality of the neural network. We are only using them in order to load our own images of digits at the end.
+  Numpy will be used for reformatting our own images and Matplotlib will be used for their visualization.
+  CV2 is the OpenCV library and it will allow us to load our images into the script. You will need to install this module separately:
+
 ```
 $ pip install opencv-python
 ```
+
+##### Datasets
+
+Keras Datasets: https://keras.io/datasets/
+Scikit-Learn Datasets: https://scikit-learn.org/stable/datasets/index.html
+
+e.t.c
+YouTube: https://bit.ly/3a5KD2i
+Website: https://www.neuralnine.com/
+Instagram: https://www.instagram.com/neuralnine/
