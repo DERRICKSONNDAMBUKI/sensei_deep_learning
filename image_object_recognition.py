@@ -40,7 +40,7 @@ model.add(layers.MaxPooling2D((2, 2)))
 model.add(layers.Conv2D(64, (3, 3), activation='relu'))
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
-model.add(layer.Dense(10, activation='relu'))
+model.add(layers.Dense(10, activation='relu'))
 # Here we again define a Sequential model. Our inputs go directly into a convolutional layer (Conv2D ). This layer has 32 filters or channels in the
 # shape of 3x3 matrices. The activation function is the ReLU function, which we already know and the input shape is 32x32x3. This is because we our
 # images have a resolution of 32x32 pixels and three layers because of the RGB colors. The result is then forwarded into a MaxPooling2D layer that simplifies
@@ -67,12 +67,13 @@ print('accuracy: ', test_acc)
 # The important thing is that we get these images down to 32x32 pixels because this is the required input format of our model. For this you can use any
 # software like Gimp or Paint. You can either crop the images or scale them.
 
-img1 = cv.imread('filename')
-img1 = cv.cvtColor(img1, cv.COLOR_BGR2RGB)
-img2 = cv.imread('filename')
-img2 = cv.cvtColor(img2, cv.COLOR_BGR2RGB)
-plt.imshow(img1, cmap=plt.cm.binary)
-plt.show()
+# img1 = cv.imread('filename')
+# img1 = cv.cvtColor(img1, cv.COLOR_BGR2RGB)
+# img2 = cv.imread('filename')
+# img2 = cv.cvtColor(img2, cv.COLOR_BGR2RGB)
+# plt.imshow(img1, cmap=plt.cm.binary)
+# plt.show()
+
 # The function imread loads the image into our script. Then we use the cvtColor method, in order to change the default color scheme of BGR (blue,
 # green, red) to RGB (red, green, blue).
 
