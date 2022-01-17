@@ -17,7 +17,7 @@ X_test = tf.keras.utils.normalize(X_test)
 # we scale our data down.
 
 # Building the neural network
-model = tf.keras.model.Sequential()
+model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
 model.add(tf.keras.layers.Dense(units=128, activation='relu'))
 model.add(tf.keras.layers.Dense(units=128, activation='relu'))
