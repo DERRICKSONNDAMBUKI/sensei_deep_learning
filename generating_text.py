@@ -11,6 +11,7 @@ from tensorflow.keras.layers import Activation, Dense, LSTM
 
 # download file
 filepath = tf.keras.utils.get_file(
+    # 'shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
     'shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
 text = open(filepath, 'rb')\
     .read().decode(encoding='utf-8').lower()
@@ -70,18 +71,18 @@ model.add(Activation('softmax'))
 # not least we have the output layer, which is an Activation layer. In this case it once again uses the softmax function that we know from the last chapter.
 model.compile(loss='categorical_crossentropy',
               optimizer=RMSprop(lr=0.01))
-model.fit(x, y, batch_size=256, epochs=4)
+model.fit(x, y, batch_size=256, epochs=1)
 # Now we compile our model and optimize it. We choose a learning rate of 0.01. After that we fit our model on the training data that we prepared. Here
 # we choose a batch_size of 256 and four epochs . The batch size indicates how many sentences we are going to show the model at once.
 
 # helper function
-
-
 def sample(preds, temperature=1.0):
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds)/temperature
-    exp_preds = exp_preds/np.sum(exp_preds)
+    exp_preds = np.exp(preds)
+    preds= exp_preds/np.sum(exp_preds)
     probas = np.random.multinomial(1, preds, 1)
+    return np.argmax(probas)
 
 # This function will later on take the predictions of our model as a parameter and then choose a “next character”. The second parameter temperature
 # indicates how risky or how unusual the pick shall be. A low value will cause a conservative pick, whereas a high value will cause a more experimental pick.
@@ -96,12 +97,14 @@ def generate_text(length, temperature):
     sentence = text[start_index:start_index+SEQ_LENGTH]
     generated += sentence
     for i in range(length):
-        x_predictions[0, t, char_to_index[char]] = 1
-        predictions = model.predict(x_predictions, verbose=0)[0]
-    next_index = sample(predictions, temperature)
-    next_character = index_to_char[next_index]
-    generated += next_character
-    sentence = sentence[1:]+next_character
+        x_predictions = np.zeros((1, SEQ_LENGTH, len(characters)))
+        for t, char in enumerate(sentence):
+            x_predictions[0, t, char_to_index[char]] = 1
+            predictions = model.predict(x_predictions, verbose=0)[0]
+        next_index = sample(predictions, temperature)
+        next_character = index_to_char[next_index]
+        generated += next_character
+        sentence = sentence[1:]+next_character
     return generated
 # We then convert this initial text again into a NumPy array. After that we feed these x-values into our neural network and predict the output. For this we use
 # the predict method. This will output the probabilities for the next characters. We then take these predictions and pass them to our helper function. You
